@@ -235,8 +235,6 @@
     toggleIcon.addEventListener('click', () => {
       const isCurrentlyHidden = pwInput.type === 'password';
       pwInput.type = isCurrentlyHidden ? 'text' : 'password';
-      // Setelah diubah: kalau sekarang jadi 'text' (terlihat) -> pakai eyeOff
-      // kalau sekarang jadi 'password' (tersembunyi) -> pakai eyeOpen
       toggleIcon.innerHTML = isCurrentlyHidden ? eyeOffPath : eyeOpenPath;
     });
   </script>
