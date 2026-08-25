@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your letter</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  html, body{ height:100%; margin:0; }
+  body{ background:#D9D2CC; }
+  #screen{
+    min-height:100vh;
+    display:flex; align-items:center; justify-content:center;
+    padding: 20px;
+    position:relative;
+    z-index:1;
+  }
+  .back{
+    position:absolute; top:28px; left:28px; z-index:5;
+    background:none; border:none; cursor:pointer;
+    font-weight:600; font-size:0.85rem; letter-spacing:0.04em;
+    color: var(--accent-deep);
+  }
+  .wrap{ max-width:min(680px, 92vw); width:100%; min-width:0; position:relative; z-index:2; }
+  .paper{
+    background:#fffdfa;
+    border: 1px solid var(--line-soft);
+    border-radius: 4px;
+    padding: 56px 52px 80px;
+    min-height: 680px;
+    box-shadow: 0 30px 60px -18px rgba(46,36,32,0.35);
+  }
+  .paper h2{
+    font-weight:800;
+    font-size:1.5rem;
+    text-align:center; color: var(--ink);
+    margin-bottom: 30px; letter-spacing:0.01em;
+  }
+  .paper .body-text{
+    font-size:0.95rem; font-weight:400;
+    line-height:38px; color: var(--ink);
+    white-space:pre-line;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    text-align: justify;
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent 30px,
+      var(--line-soft) 31px,
+      transparent 32px
+    );
+    background-size: 100% 38px;
+  }
+</style>
+</head>
+<body>
+
+  <div class="decor" aria-hidden="true">
+    <div class="blob" style="width:320px;height:320px;top:-100px;left:-100px;"></div>
+    <div class="blob" style="width:360px;height:360px;bottom:-130px;right:-110px;"></div>
+  </div>
+
+  <div id="screen">
+    <button class="back" id="back-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M11 18l-6-6 6-6"/></svg>
+      back
+    </button>
+    <div class="wrap">
+      <div class="paper">
+        <h2 id="letter-title">…</h2>
+        <div class="body-text" id="letter-body"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script>
+
+    const params = new URLSearchParams(location.search);
+    const id = Math.min(Math.max(parseInt(params.get('id') || '0', 10), 0), LETTERS.length - 1);
+
+    document.getElementById('letter-title').textContent = `${LETTERS[id]}`;
+document.getElementById('letter-body').textContent =
+  LETTER_BODIES[id] || `[ not written yet for "${LETTERS[id]}" — add it in data.js, LETTER_BODIES[${id}] ]`;
+
+    document.getElementById('back-btn').addEventListener('click', () => goTo('letters.html'));
+  </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hi honey</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  #hi{
+    min-height:100vh;
+    display:flex; align-items:center; justify-content:center;
+    text-align:center; cursor:pointer;
+    background: radial-gradient(circle at 50% 45%, var(--cream-deep) 0%, var(--cream) 60%, #ffffff 100%);
+    position:relative; z-index:1;
+  }
+  #hi h1{
+    font-family: 'Alex Brush', cursive;
+    font-weight:400;
+    font-size: clamp(3.6rem, 10vw, 6.5rem);
+    letter-spacing: 0.01em;
+    color: var(--accent-deep);
+  }
+
+  #hi p{
+    margin-top:18px;
+    font-weight:400;
+    font-style:italic;
+    font-size:0.95rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+  <div class="decor" aria-hidden="true">
+    <div class="blob" style="width:340px;height:340px;top:-120px;left:-110px;"></div>
+    <div class="blob" style="width:380px;height:380px;bottom:-140px;right:-120px;"></div>
+  </div>
+
+  <div id="hi">
+    <div>
+      <h1>Hi honey</h1>
+      <p>Tap anywhere to continue</p>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script>
+    document.getElementById('hi').addEventListener('click', () => goTo('login.html'));
+  </script>
+</body>
+</html>
