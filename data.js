@@ -180,9 +180,7 @@ window.addEventListener('DOMContentLoaded', () => {
   requestAnimationFrame(() => document.body.classList.add('fade-in'));
 });
 
-window.addEventListener('pageshow', (e) => {
-  if (e.persisted) {
-    document.body.classList.remove('fade-out');
-    document.body.classList.add('fade-in');
-  }
+window.addEventListener('pageshow', () => {
+  document.body.classList.remove('fade-out');
+  document.body.classList.add('fade-in');
 });
